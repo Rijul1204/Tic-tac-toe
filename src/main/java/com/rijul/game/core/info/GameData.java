@@ -1,4 +1,4 @@
-package com.rijul.game;
+package com.rijul.game.core.info;
 
 import java.util.Scanner;
 

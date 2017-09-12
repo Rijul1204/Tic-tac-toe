@@ -18,7 +18,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
+			<version>4.11</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -31,7 +31,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>com.rijul.game.App</mainClass>
+							<mainClass>com.rijul.game.app.App</mainClass>
 						</manifest>
 					</archive>
 				</configuration>

@@ -1,4 +1,6 @@
-package com.rijul.game;
+package com.rijul.game.core;
+
+import com.rijul.game.core.info.GameData;
 
 public class Board {
 
@@ -25,7 +27,7 @@ public class Board {
 
 		for (int i = 0; i < dimension; i++) {
 			for (int j = 0; j < dimension; j++) {
-				if (j>0) {
+				if (j > 0) {
 					System.out.print(" | ");
 				}
 				if (board[i][j] == GameData.FIRST_PLAYER_VALUE) {
@@ -45,8 +47,16 @@ public class Board {
 
 		System.out.println();
 	}
-	
+
 	public int getValue(int x, int y) {
+		return this.board[x][y];
+	}
+
+	public int getValue(int pos) {
+
+		pos--;
+		int x = pos / dimension;
+		int y = pos % dimension;
 		return this.board[x][y];
 	}
 
@@ -62,6 +72,20 @@ public class Board {
 		int y = pos % dimension;
 
 		board[x][y] = value;
+	}
+
+	public void resetMarker(int pos) {
+
+		if (pos > (dimension * dimension)) {
+			// TODO : Throw exception
+			return;
+		}
+
+		pos--;
+		int x = pos / dimension;
+		int y = pos % dimension;
+
+		board[x][y] = pos + 1;
 	}
 
 }

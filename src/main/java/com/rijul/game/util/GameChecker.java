@@ -1,4 +1,7 @@
-package com.rijul.game;
+package com.rijul.game.util;
+
+import com.rijul.game.core.Board;
+import com.rijul.game.core.info.GameData;
 
 public class GameChecker {
 
