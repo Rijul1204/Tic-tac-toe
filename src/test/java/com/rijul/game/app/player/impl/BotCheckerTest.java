@@ -27,15 +27,8 @@ public class BotCheckerTest {
 	}
 
 	@Test
-	public void testMove() {
-		
-		board.setMarker(8, FIRST);
-		board.setMarker(6, FIRST);
-		board.setMarker(9, SECOND);
-		board.setMarker(5, SECOND);
-		
-		int move = bot.promptForMove(board);
-		System.out.println(move);
+	public void testMoveForSavingGame() {
+		assert(true);
 	}
 
 }

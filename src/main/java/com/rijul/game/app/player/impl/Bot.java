@@ -23,6 +23,9 @@ public class Bot implements Player {
 	private static final int[][] WINNING_POS = new int[][] { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 }, { 1, 4, 7 },
 			{ 2, 5, 8 }, { 3, 6, 9 }, { 1, 5, 9 }, { 3, 5, 7 } };
 
+	private static final int[] INITIAL_MOVES = new int[] { 1, 3, 5, 7, 9 };
+	private static final String INITIAL_BOARD = "123456789";
+
 	private static final int LOSING_POSITION = -1;
 	private static final int WINNING_POSITION = 1;
 	private static final int DRAW_POSITION = 0;
@@ -51,12 +54,19 @@ public class Bot implements Player {
 	}
 
 	private int getMove(Board board) {
+
+		String str = getBoardString(board);
 		if (marker == GameData.FIRST_PLAYER_VALUE) {
+			// Optimizing the first move only . .
+			if (str.equals(INITIAL_BOARD)) {
+				int ind = random.nextInt(INITIAL_MOVES.length);
+				return INITIAL_MOVES[ind];
+			}
 			getOptimal(board, 1);
 		} else {
 			getOptimal(board, 2);
 		}
-		String str = getBoardString(board);
+
 		return moveMap.get(str);
 	}
 
@@ -119,7 +129,7 @@ public class Bot implements Player {
 				move = i;
 			} else if (currResult == DRAW_POSITION) {
 				if (result == DRAW_POSITION) {
-					if(random.nextInt()%2 == 1) {
+					if (random.nextInt() % 2 == 1) {
 						move = i;
 					}
 				} else {
