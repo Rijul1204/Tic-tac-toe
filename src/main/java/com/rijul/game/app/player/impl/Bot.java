@@ -53,16 +53,13 @@ public class Bot implements Player {
 	private int getMove(Board board) {
 
 		String boardAsString = getBoardAsString(board);
-		if (playerNumber == 1) {
-			// Optimizing for first move only . .
-			if (boardAsString.equals(INITIAL_BOARD)) {
-				int ind = random.nextInt(INITIAL_MOVES.length);
-				return INITIAL_MOVES[ind];
-			}
-			getOptimalResultForBoardPosition(board, 1);
-		} else {
-			getOptimalResultForBoardPosition(board, 2);
+		
+		// Optimizing for first move only . .
+		if (boardAsString.equals(INITIAL_BOARD)) {
+			int ind = random.nextInt(INITIAL_MOVES.length);
+			return INITIAL_MOVES[ind];
 		}
+		getOptimalResultForBoardPosition(board, 1);
 
 		return optimalMoveFromBoardPosition.get(boardAsString);
 	}
@@ -163,7 +160,7 @@ public class Bot implements Player {
 	private boolean isWinning(Board board) {
 
 		for (int ind = 0; ind < WINNING_POS.length; ind++) {
-			
+
 			int pos1 = WINNING_POS[ind][0];
 			int pos2 = WINNING_POS[ind][1];
 			int pos3 = WINNING_POS[ind][2];
@@ -179,7 +176,7 @@ public class Bot implements Player {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	@Override
 	public String getName() {
 		return this.name;
@@ -187,7 +184,6 @@ public class Bot implements Player {
 
 	@Override
 	public int getPlayerNumber() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.playerNumber;
 	}
 }

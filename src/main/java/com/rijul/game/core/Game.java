@@ -52,7 +52,7 @@ public class Game {
 
 			board.print();
 
-			if (GameChecker.isWinningPostion(GameData.getPlayerMarkerInBoard(currPlayer.getPlayerNumber()), board)) {
+			if (GameChecker.isWinningPostion(GameData.getPlayerValueInBoard(currPlayer.getPlayerNumber()), board)) {
 				System.out.println("Congratulations " + currPlayer.getName() + "! You have won.");
 				break;
 			}
@@ -73,21 +73,21 @@ public class Game {
 		case BotVsHuman:
 			board = new Board(3);
 
-			player1 = getBot(1, GameData.FIRST_PLAYER_VALUE, GameData.FIRST_PLAYER_MARKER);
-			player2 = getHumanPlayer(2, GameData.SECOND_PLAYER_VALUE, GameData.SECOND_PLAYER_MARKER);
+			player1 = getBot(1);
+			player2 = getHumanPlayer(2);
 			break;
 		case HumanVsBot:
 			board = new Board(3);
 
-			player1 = getHumanPlayer(1, GameData.FIRST_PLAYER_VALUE, GameData.FIRST_PLAYER_MARKER);
-			player2 = getBot(2, GameData.SECOND_PLAYER_VALUE, GameData.SECOND_PLAYER_MARKER);
+			player1 = getHumanPlayer(1);
+			player2 = getBot(2);
 			break;
 		case HumanVsHuman:
 			dimension = getDimension();
 			board = new Board(dimension);
 
-			player1 = getHumanPlayer(1, GameData.FIRST_PLAYER_VALUE, GameData.FIRST_PLAYER_MARKER);
-			player2 = getHumanPlayer(2, GameData.SECOND_PLAYER_VALUE, GameData.SECOND_PLAYER_MARKER);
+			player1 = getHumanPlayer(1);
+			player2 = getHumanPlayer(2);
 			break;
 
 		}
@@ -112,11 +112,11 @@ public class Game {
 		return GameMode.of(mode - 1);
 	}
 
-	private Player getBot(int playerNumber, int value, char markder) {
+	private Player getBot(int playerNumber) {
 		return new Bot("bot ", playerNumber);
 	}
 
-	private Player getHumanPlayer(int playerNumber, int marker, char markerChar) {
+	private Player getHumanPlayer(int playerNumber) {
 
 		System.out.println("Enter name for Player " + playerNumber + ": ");
 		System.out.print(">>  ");

@@ -4,21 +4,18 @@ import java.util.Scanner;
 
 import com.rijul.game.app.player.spec.Player;
 import com.rijul.game.core.Board;
+import com.rijul.game.core.info.GameData;
 import com.rijul.game.util.GameChecker;
 
 public class HumanPlayer implements Player{
 	
 	private String name;
 	private int playerNumber;
-	private int marker;
-	private char markerChar;
 	private Scanner scanner;
 	
 	public HumanPlayer(String name, int playerNumber) {
 		this.name = name;
-		this.marker = marker;
 		this.playerNumber = playerNumber;
-		this.markerChar = markerChar;
 		scanner = new Scanner(System.in);
 	}
 	
@@ -40,7 +37,7 @@ public class HumanPlayer implements Player{
 	@Override
 	public int promptForMove(Board board) {
 		
-		System.out.println(this.name +", choose a box to place an '"+ this.markerChar + "' into:");
+		System.out.println(this.name +", choose a box to place an '"+ GameData.getPlayerMarkerInBoard(playerNumber) + "' into:");
 		System.out.println(">> ");
 		
 		return getMove(board);		
