@@ -8,7 +8,7 @@ public class GameChecker {
 	public static final int dirx[] = { -1, -1, -1, 0, 0, 1, 1, 1 };
 	public static final int diry[] = { -1, 0, 1, 1, -1, -1, 0, 1 };
 
-	public static boolean isWon(int markerValue, Board board) {
+	public static boolean isWinningPostion(int markerValue, Board board) {
 
 		for (int i = 0; i < board.getDimension(); i++) {
 			for (int j = 0; j < board.getDimension(); j++) {

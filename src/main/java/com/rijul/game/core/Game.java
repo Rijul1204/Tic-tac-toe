@@ -8,6 +8,7 @@ import com.rijul.game.app.player.spec.Player;
 import com.rijul.game.core.info.GameData;
 import com.rijul.game.core.info.GameMode;
 import com.rijul.game.util.GameChecker;
+import com.rijul.game.util.GameUtil;
 
 public class Game {
 
@@ -37,7 +38,7 @@ public class Game {
 
 		board.print();
 
-		while (totalMove-- > 0) {
+		while ((totalMove--) > 0) {
 
 			if (turn == 1) {
 				currPlayer = player1;
@@ -47,18 +48,19 @@ public class Game {
 
 			int move = currPlayer.promptForMove(board);
 
-			board.setMarker(move, currPlayer.getMarker());
+			board.setMarker(move, GameData.getPlayerValueInBoard(currPlayer.getPlayerNumber()));
 
 			board.print();
 
-			if (GameChecker.isWon(currPlayer.getMarker(), board)) {
+			if (GameChecker.isWinningPostion(GameData.getPlayerMarkerInBoard(currPlayer.getPlayerNumber()), board)) {
 				System.out.println("Congratulations " + currPlayer.getName() + "! You have won.");
 				break;
 			}
 
-			turn = 3 - turn;
+			turn = GameUtil.getNextTurnForTwoPlayer(turn);
 		}
-
+		
+		// No move left 
 		if (totalMove < 0) {
 			System.out.println("It's a Draw !!!");
 		}
@@ -105,13 +107,13 @@ public class Game {
 		if (nextLine.length() == 0) {
 			return GameMode.of(0);
 		}
-		
-		int mode = Integer.parseInt(nextLine);		
+
+		int mode = Integer.parseInt(nextLine);
 		return GameMode.of(mode - 1);
 	}
 
 	private Player getBot(int playerNumber, int value, char markder) {
-		return new Bot("bot ", value, markder);
+		return new Bot("bot ", playerNumber);
 	}
 
 	private Player getHumanPlayer(int playerNumber, int marker, char markerChar) {
@@ -121,7 +123,7 @@ public class Game {
 
 		String name = scanner.nextLine();
 
-		Player player = new HumanPlayer(name, marker, markerChar);
+		Player player = new HumanPlayer(name, playerNumber);
 
 		return player;
 

@@ -9,27 +9,24 @@ import com.rijul.game.util.GameChecker;
 public class HumanPlayer implements Player{
 	
 	private String name;
+	private int playerNumber;
 	private int marker;
 	private char markerChar;
 	private Scanner scanner;
 	
-	public HumanPlayer(String name, int marker, char markerChar) {
+	public HumanPlayer(String name, int playerNumber) {
 		this.name = name;
 		this.marker = marker;
+		this.playerNumber = playerNumber;
 		this.markerChar = markerChar;
 		scanner = new Scanner(System.in);
 	}
 	
 	@Override
-	public int getMarker() {
-		return marker;
+	public int getPlayerNumber() {
+		return playerNumber;
 	}
-
-	@Override
-	public char getMarkerChar() {
-		return markerChar;
-	}	
-
+	
 	@Override
 	public void setName(String name) {
 		this.name = name;
@@ -62,6 +59,4 @@ public class HumanPlayer implements Player{
 		}
 		return move;
 	}
-
-	
 }

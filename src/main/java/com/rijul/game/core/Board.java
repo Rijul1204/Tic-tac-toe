@@ -74,6 +74,15 @@ public class Board {
 		board[x][y] = value;
 	}
 
+	public void setMarkerAccordingToTurn(int move, int turn) {
+
+		if (turn == 1) {
+			setMarker(move, GameData.FIRST_PLAYER_VALUE);
+		} else if (turn == 2) {
+			setMarker(move, GameData.SECOND_PLAYER_VALUE);
+		}
+	}
+
 	public void resetMarker(int pos) {
 
 		if (pos > (dimension * dimension)) {

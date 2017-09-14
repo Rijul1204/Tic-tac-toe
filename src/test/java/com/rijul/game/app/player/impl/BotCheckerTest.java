@@ -17,12 +17,12 @@ public class BotCheckerTest {
 
 	@Before
 	public void setUp() throws Exception {
-		bot = getBot(1, GameData.FIRST_PLAYER_VALUE, GameData.FIRST_PLAYER_MARKER);
+		bot = getBot(1);
 		board = new Board(3);
 	}
 
-	private Player getBot(int i, int firstPlayerValue, char firstPlayerMarker) {
-		return new Bot("bot ", firstPlayerValue, firstPlayerMarker);
+	private Player getBot(int playerNumber) {
+		return new Bot("bot ", playerNumber);
 
 	}
 
