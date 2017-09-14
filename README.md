@@ -17,7 +17,7 @@ At first you will see three game mode.
 2. Human (1st Player) vs Bot (Support only 3x3 board)
 3. Human  vs Human 
 ```
-Please choose 1/2 if you want to play with My bot. I can almost gurantee you can never beat my bot in tic-tac-toe :p. If you want more challenge choose 1. May be you will lose many times. 
+Please choose 1/2 if you want to play with my bot. I can almost gurantee you can never beat my bot in tic-tac-toe :p. If you want more challenge choose 1. May be you will lose many times. 
 
 For playing with Human, it's more generic N*N board ( with a cap on N (currently 33) ) . But in order to win you need only 3 adjacent 'x' or 'o'. 
 
