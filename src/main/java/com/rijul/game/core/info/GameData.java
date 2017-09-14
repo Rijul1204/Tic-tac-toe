@@ -7,8 +7,11 @@ public class GameData {
 	public static final int FIRST_PLAYER_VALUE = -1;
 	public static final int SECOND_PLAYER_VALUE = -2;
 
-	public static final char FIRST_PLAYER_MARKER = 'x';
-	public static final char SECOND_PLAYER_MARKER = 'o';
+	public static final char FIRST_PLAYER_MARKER = 'X';
+	public static final char SECOND_PLAYER_MARKER = 'O';
+
+	public static final int  MIN_DIMENSION = 0;
+	public static final int MAX_DIMENSION = 33;
 	
 	public static int getPlayerValueInBoard(int playerNumber) {
 		if(playerNumber == 1) {

@@ -12,7 +12,7 @@ public enum GameMode {
 		this.mode = mode;
 	}
 	public static GameMode of(int mode) {
-		if(mode>2) return null;
+		if(mode>2 || mode<0) return null;
 		return GameMode.values()[mode];
 	}
 }

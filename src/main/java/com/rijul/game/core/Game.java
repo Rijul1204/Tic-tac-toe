@@ -19,7 +19,7 @@ public class Game {
 	private Player player2;
 
 	private Scanner scanner;
-	
+
 	private static final int DIMENSION_FOR_BOT_GAME = 3;
 
 	public Game() {
@@ -31,7 +31,7 @@ public class Game {
 		gameMode = getMode();
 
 		initializeGame(gameMode);
-		
+
 		int totalMove = board.getDimension() * board.getDimension();
 		int turn = 1;
 		Player currPlayer = player1;
@@ -39,7 +39,7 @@ public class Game {
 		board.print();
 
 		while ((totalMove--) > 0) {
-			
+
 			currPlayer = getPlayerAccordingToTurn(turn);
 
 			int move = currPlayer.promptForMove(board);
@@ -55,8 +55,8 @@ public class Game {
 
 			turn = GameUtil.getNextTurnNumber(turn);
 		}
-		
-		// No move left 
+
+		// No move left
 		if (totalMove < 0) {
 			System.out.println("It's a Draw !!!");
 		}
@@ -101,12 +101,7 @@ public class Game {
 
 	private GameMode getMode() {
 
-		System.out.println("Please choose mode of the Game: ");
-		System.out.println("1. Bot (1st Player)  vs Human (Support only 3x3 board)");
-		System.out.println("2. Human (1st Player) vs Bot (Support only 3x3 board)");
-		System.out.println("3. Human  vs Human  (Support upto 500x500 board)");
-		System.out.println(">> please choose your option. (default 1) ");
-		System.out.print(">> ");
+		printMessageForFetchingGameMode();
 
 		String nextLine = scanner.nextLine();
 		if (nextLine.length() == 0) {
@@ -114,7 +109,24 @@ public class Game {
 		}
 
 		int mode = Integer.parseInt(nextLine);
-		return GameMode.of(mode - 1);
+		GameMode gameMode = GameMode.of(mode - 1);
+
+		if (gameMode == null) {
+			System.out.println("Please choose valid option");
+			return getMode();
+		}
+
+		return gameMode;
+	}
+
+	private void printMessageForFetchingGameMode() {
+		System.out.println("Please choose mode of the Game: ");
+		System.out.println("1. Bot (1st Player)  vs Human (Support only 3x3 board)");
+		System.out.println("2. Human (1st Player) vs Bot (Support only 3x3 board)");
+		System.out.println("3. Human  vs Human  " + "(Support upto " + GameData.MAX_DIMENSION + "X"
+				+ GameData.MAX_DIMENSION + "board");
+		System.out.println(">> please choose your option. (default 1) ");
+		System.out.print(">> ");
 	}
 
 	private Player getBot(int playerNumber) {
@@ -128,6 +140,11 @@ public class Game {
 
 		String name = scanner.nextLine();
 
+		if (name.isEmpty()) {
+			System.out.println("Please choose name of at least length 1");
+			return getHumanPlayer(playerNumber);
+		}
+
 		Player player = new HumanPlayer(name, playerNumber);
 
 		return player;
@@ -139,8 +156,20 @@ public class Game {
 		System.out.println("Please choose dimension of board: ");
 		System.out.print(">> ");
 
-		String number = scanner.nextLine();
+		try {
+			String number = scanner.nextLine();
+			int dimension = Integer.parseInt(number);
 
-		return Integer.parseInt(number);
+			if (dimension < GameData.MIN_DIMENSION || dimension > GameData.MAX_DIMENSION) {
+				System.out.println("Please input valid dimension.");
+				return getDimension();
+			}
+
+			return dimension;
+
+		} catch (NumberFormatException ex) {
+			System.out.println("Please input valid number.");
+			return getDimension();
+		}
 	}
 }

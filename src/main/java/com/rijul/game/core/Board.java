@@ -35,11 +35,11 @@ public class Board {
 					System.out.print(" | ");
 				}
 				if (board[i][j] == GameData.FIRST_PLAYER_VALUE) {
-					System.out.print(String.format("%2c", GameData.FIRST_PLAYER_MARKER));
+					System.out.print(String.format("%3c", GameData.FIRST_PLAYER_MARKER));
 				} else if (board[i][j] == GameData.SECOND_PLAYER_VALUE) {
-					System.out.print(String.format("%2c", GameData.SECOND_PLAYER_MARKER));
+					System.out.print(String.format("%3c", GameData.SECOND_PLAYER_MARKER));
 				} else {
-					System.out.print(String.format("%2d", board[i][j]));
+					System.out.print(String.format("%3d", board[i][j]));
 				}
 			}
 			System.out.println();
@@ -53,7 +53,7 @@ public class Board {
 	}
 
 	private int getTotalNumberOfDashForFormating() {
-		return 5 * dimension - 2;
+		return 6 * dimension - 2;
 	}
 
 	public int getValue(int x, int y) {
