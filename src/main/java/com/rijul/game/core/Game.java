@@ -121,10 +121,10 @@ public class Game {
 
 	private void printMessageForFetchingGameMode() {
 		System.out.println("Please choose mode of the Game: ");
-		System.out.println("1. Bot (1st Player)  vs Human (Support only 3x3 board)");
-		System.out.println("2. Human (1st Player) vs Bot (Support only 3x3 board)");
-		System.out.println("3. Human  vs Human  " + "(Support upto " + GameData.MAX_DIMENSION + "X"
-				+ GameData.MAX_DIMENSION + "board)");
+		System.out.println("1. Bot (1st Player)  vs Human (Support only 3 * 3 board)");
+		System.out.println("2. Human (1st Player) vs Bot (Support only 3 * 3 board)");
+		System.out.println("3. Human  vs Human  " + "(Support upto " + GameData.MAX_DIMENSION + " * "
+				+ GameData.MAX_DIMENSION + " board)");
 		System.out.println(">> please choose your option. (default 1) ");
 		System.out.print(">> ");
 	}
