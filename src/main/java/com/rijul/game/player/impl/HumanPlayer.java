@@ -1,10 +1,10 @@
-package com.rijul.game.app.player.impl;
+package com.rijul.game.player.impl;
 
 import java.util.Scanner;
 
-import com.rijul.game.app.player.spec.Player;
 import com.rijul.game.core.Board;
 import com.rijul.game.core.info.GameData;
+import com.rijul.game.player.spec.Player;
 import com.rijul.game.util.GameChecker;
 
 public class HumanPlayer implements Player {

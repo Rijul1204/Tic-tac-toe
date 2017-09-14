@@ -1,4 +1,4 @@
-package com.rijul.game.app;
+package com.rijul.game;
 
 import com.rijul.game.core.Game;
 

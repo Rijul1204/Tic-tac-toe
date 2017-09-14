@@ -3,9 +3,10 @@ package com.rijul.game.app.player.impl;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.rijul.game.app.player.spec.Player;
 import com.rijul.game.core.Board;
 import com.rijul.game.core.info.GameData;
+import com.rijul.game.player.impl.Bot;
+import com.rijul.game.player.spec.Player;
 
 public class BotCheckerTest {
 

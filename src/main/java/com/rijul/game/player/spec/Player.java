@@ -1,4 +1,4 @@
-package com.rijul.game.app.player.spec;
+package com.rijul.game.player.spec;
 
 import com.rijul.game.core.Board;
 

@@ -2,11 +2,11 @@ package com.rijul.game.core;
 
 import java.util.Scanner;
 
-import com.rijul.game.app.player.impl.Bot;
-import com.rijul.game.app.player.impl.HumanPlayer;
-import com.rijul.game.app.player.spec.Player;
 import com.rijul.game.core.info.GameData;
 import com.rijul.game.core.info.GameMode;
+import com.rijul.game.player.impl.Bot;
+import com.rijul.game.player.impl.HumanPlayer;
+import com.rijul.game.player.spec.Player;
 import com.rijul.game.util.GameChecker;
 import com.rijul.game.util.GameUtil;
 

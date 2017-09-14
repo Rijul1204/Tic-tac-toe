@@ -31,7 +31,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>com.rijul.game.app.App</mainClass>
+							<mainClass>com.rijul.game.App</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
