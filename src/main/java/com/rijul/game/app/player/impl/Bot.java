@@ -115,7 +115,7 @@ public class Bot implements Player {
 
 			board.setMarkerAccordingToTurn(move, turn);
 
-			int currResult = getOptimalResultForBoardPosition(board, GameUtil.getNextTurnForTwoPlayer(turn));
+			int currResult = getOptimalResultForBoardPosition(board, GameUtil.getNextTurnNumber(turn));
 
 			if (currResult == LOSING_POSITION) {
 				board.resetMarker(move);

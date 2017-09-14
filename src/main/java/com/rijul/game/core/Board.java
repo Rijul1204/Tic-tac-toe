@@ -10,6 +10,10 @@ public class Board {
 	public Board(int dimension) {
 		this.dimension = dimension;
 		board = new int[dimension][dimension];
+		initializeBoard(dimension);
+	}
+
+	private void initializeBoard(int dimension) {
 		for (int i = 0; i < dimension; i++) {
 			for (int j = 0; j < dimension; j++) {
 				board[i][j] = ((i * dimension) + j) + 1;
@@ -39,13 +43,17 @@ public class Board {
 				}
 			}
 			System.out.println();
-			for (int j = 1; j <= 5 * dimension - 2; j++) {
+			for (int j = 1; j <= getTotalNumberOfDashForFormating(); j++) {
 				System.out.print("-");
 			}
 			System.out.println();
 		}
 
 		System.out.println();
+	}
+
+	private int getTotalNumberOfDashForFormating() {
+		return 5 * dimension - 2;
 	}
 
 	public int getValue(int x, int y) {
@@ -63,7 +71,7 @@ public class Board {
 	public void setMarker(int pos, int value) {
 
 		if (pos > (dimension * dimension)) {
-			// TODO : Throw exception
+			// TODO : throw exception
 			return;
 		}
 

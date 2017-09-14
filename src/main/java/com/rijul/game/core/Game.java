@@ -13,13 +13,14 @@ import com.rijul.game.util.GameUtil;
 public class Game {
 
 	private GameMode gameMode;
-
 	private Board board;
 
 	private Player player1;
 	private Player player2;
 
 	private Scanner scanner;
+	
+	private static final int DIMENSION_FOR_BOT_GAME = 3;
 
 	public Game() {
 		scanner = new Scanner(System.in);
@@ -30,21 +31,16 @@ public class Game {
 		gameMode = getMode();
 
 		initializeGame(gameMode);
-
+		
+		int totalMove = board.getDimension() * board.getDimension();
 		int turn = 1;
 		Player currPlayer = player1;
-
-		int totalMove = board.getDimension() * board.getDimension();
 
 		board.print();
 
 		while ((totalMove--) > 0) {
-
-			if (turn == 1) {
-				currPlayer = player1;
-			} else {
-				currPlayer = player2;
-			}
+			
+			currPlayer = getPlayerAccordingToTurn(turn);
 
 			int move = currPlayer.promptForMove(board);
 
@@ -57,7 +53,7 @@ public class Game {
 				break;
 			}
 
-			turn = GameUtil.getNextTurnForTwoPlayer(turn);
+			turn = GameUtil.getNextTurnNumber(turn);
 		}
 		
 		// No move left 
@@ -66,24 +62,33 @@ public class Game {
 		}
 	}
 
+	private Player getPlayerAccordingToTurn(int turn) {
+		Player currPlayer;
+		if (turn == 1) {
+			currPlayer = player1;
+		} else {
+			currPlayer = player2;
+		}
+		return currPlayer;
+	}
+
 	private void initializeGame(GameMode gameMode) {
 
-		int dimension = 3;
 		switch (gameMode) {
 		case BotVsHuman:
-			board = new Board(3);
+			board = new Board(DIMENSION_FOR_BOT_GAME);
 
 			player1 = getBot(1);
 			player2 = getHumanPlayer(2);
 			break;
 		case HumanVsBot:
-			board = new Board(3);
+			board = new Board(DIMENSION_FOR_BOT_GAME);
 
 			player1 = getHumanPlayer(1);
 			player2 = getBot(2);
 			break;
 		case HumanVsHuman:
-			dimension = getDimension();
+			int dimension = getDimension();
 			board = new Board(dimension);
 
 			player1 = getHumanPlayer(1);
