@@ -68,7 +68,7 @@ public class Board {
 		return this.board[x][y];
 	}
 
-	public void setMarker(int pos, int value) {
+	private void setMarker(int pos, int value) {
 
 		if (pos > (dimension * dimension)) {
 			// TODO : throw exception

@@ -44,8 +44,8 @@ public class Game {
 
 			int move = currPlayer.promptForMove(board);
 
-			board.setMarker(move, GameData.getPlayerValueInBoard(currPlayer.getPlayerNumber()));
-
+			board.setMarkerAccordingToTurn(move, turn);
+			
 			board.print();
 
 			if (GameChecker.isWinningPostion(GameData.getPlayerValueInBoard(currPlayer.getPlayerNumber()), board)) {

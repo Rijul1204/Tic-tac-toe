@@ -19,6 +19,10 @@ public class Bot implements Player {
 
 	private String name;
 	private int playerNumber;
+	
+	private Map<String, Integer> optimalMoveFromBoardPosition;
+	private Map<String, Integer> optimalResultForBoardPosition;
+	private Random random;
 
 	private static final int[][] WINNING_POS = new int[][] { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 }, { 1, 4, 7 },
 			{ 2, 5, 8 }, { 3, 6, 9 }, { 1, 5, 9 }, { 3, 5, 7 } };
@@ -29,10 +33,7 @@ public class Bot implements Player {
 	private static final int WINNING_POSITION = 1;
 	private static final int DRAW_POSITION = 0;
 
-	private Map<String, Integer> optimalMoveFromBoardPosition;
-	private Map<String, Integer> optimalResultForBoardPosition;
-	private Random random;
-
+	
 	public Bot(String name, int playerNumber) {
 		this.name = name;
 		this.playerNumber = playerNumber;
@@ -59,7 +60,7 @@ public class Bot implements Player {
 			int ind = random.nextInt(INITIAL_MOVES.length);
 			return INITIAL_MOVES[ind];
 		}
-		getOptimalResultForBoardPosition(board, 1);
+		getOptimalResultForBoardPosition(board, getPlayerNumber());
 
 		return optimalMoveFromBoardPosition.get(boardAsString);
 	}
