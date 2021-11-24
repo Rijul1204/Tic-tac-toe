@@ -3,7 +3,7 @@ A java console game for tic-tac-toe.
 
 # How to start 
 
-In order to play this game, execute in following order 
+In order to play this game, execute in following order (please ensure that, you have installed maven into your workspace)
 
   - mvn clean install 
   - java -jar target/tic-tac-toe-1.0-SNAPSHOT.jar
